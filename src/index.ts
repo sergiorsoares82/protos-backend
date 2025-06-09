@@ -1,5 +1,10 @@
-import { PrismaClient } from './generated/prisma/client';
+import { PrismaClient } from './generated/prisma';
 import express from 'express';
+import * as dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
+
+const env = dotenv.config();
+dotenvExpand.expand(env);
 
 const app = express();
 const port = process.env.PORT || 3000;
