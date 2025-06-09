@@ -11,6 +11,8 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
+console.log('Novo commit');
+
 app.get('/', (req, res) => {
   res.send('Hello from Express + TypeScript!');
 });
