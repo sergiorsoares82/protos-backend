@@ -1,4 +1,6 @@
-import { PrismaClient } from './generated/prisma';
+import PrismaPkg from './generated/prisma/client.js';
+const { PrismaClient } = PrismaPkg;
+
 import express from 'express';
 import * as dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
