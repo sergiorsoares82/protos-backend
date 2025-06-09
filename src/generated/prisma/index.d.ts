@@ -13,7 +13,11 @@ import $Result = runtime.Types.Result
 export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
-
+/**
+ * Model Dummy
+ * 
+ */
+export type Dummy = $Result.DefaultSelection<Prisma.$DummyPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -22,8 +26,8 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Dummies
+ * const dummies = await prisma.dummy.findMany()
  * ```
  *
  *
@@ -43,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Dummies
+   * const dummies = await prisma.dummy.findMany()
    * ```
    *
    *
@@ -140,7 +144,15 @@ export class PrismaClient<
     extArgs: ExtArgs
   }>>
 
-    
+      /**
+   * `prisma.dummy`: Exposes CRUD operations for the **Dummy** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Dummies
+    * const dummies = await prisma.dummy.findMany()
+    * ```
+    */
+  get dummy(): Prisma.DummyDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -581,7 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-
+    Dummy: 'Dummy'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -600,10 +612,85 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: never
+      modelProps: "dummy"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
-    model: {}
+    model: {
+      Dummy: {
+        payload: Prisma.$DummyPayload<ExtArgs>
+        fields: Prisma.DummyFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DummyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DummyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          findFirst: {
+            args: Prisma.DummyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DummyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          findMany: {
+            args: Prisma.DummyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>[]
+          }
+          create: {
+            args: Prisma.DummyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          createMany: {
+            args: Prisma.DummyCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DummyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>[]
+          }
+          delete: {
+            args: Prisma.DummyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          update: {
+            args: Prisma.DummyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          deleteMany: {
+            args: Prisma.DummyDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DummyUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DummyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>[]
+          }
+          upsert: {
+            args: Prisma.DummyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DummyPayload>
+          }
+          aggregate: {
+            args: Prisma.DummyAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDummy>
+          }
+          groupBy: {
+            args: Prisma.DummyGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DummyGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DummyCountArgs<ExtArgs>
+            result: $Utils.Optional<DummyCountAggregateOutputType> | number
+          }
+        }
+      }
+    }
   } & {
     other: {
       payload: any
@@ -686,7 +773,9 @@ export namespace Prisma {
      */
     omit?: Prisma.GlobalOmitConfig
   }
-  export type GlobalOmitConfig = {}
+  export type GlobalOmitConfig = {
+    dummy?: DummyOmit
+  }
 
   /* Types for Logging */
   export type LogLevel = 'info' | 'query' | 'warn' | 'error'
@@ -780,6 +869,982 @@ export namespace Prisma {
    * Models
    */
 
+  /**
+   * Model Dummy
+   */
+
+  export type AggregateDummy = {
+    _count: DummyCountAggregateOutputType | null
+    _avg: DummyAvgAggregateOutputType | null
+    _sum: DummySumAggregateOutputType | null
+    _min: DummyMinAggregateOutputType | null
+    _max: DummyMaxAggregateOutputType | null
+  }
+
+  export type DummyAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DummySumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DummyMinAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DummyMaxAggregateOutputType = {
+    id: number | null
+  }
+
+  export type DummyCountAggregateOutputType = {
+    id: number
+    _all: number
+  }
+
+
+  export type DummyAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type DummySumAggregateInputType = {
+    id?: true
+  }
+
+  export type DummyMinAggregateInputType = {
+    id?: true
+  }
+
+  export type DummyMaxAggregateInputType = {
+    id?: true
+  }
+
+  export type DummyCountAggregateInputType = {
+    id?: true
+    _all?: true
+  }
+
+  export type DummyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dummy to aggregate.
+     */
+    where?: DummyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dummies to fetch.
+     */
+    orderBy?: DummyOrderByWithRelationInput | DummyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DummyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dummies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dummies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Dummies
+    **/
+    _count?: true | DummyCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DummyAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DummySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DummyMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DummyMaxAggregateInputType
+  }
+
+  export type GetDummyAggregateType<T extends DummyAggregateArgs> = {
+        [P in keyof T & keyof AggregateDummy]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDummy[P]>
+      : GetScalarType<T[P], AggregateDummy[P]>
+  }
+
+
+
+
+  export type DummyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DummyWhereInput
+    orderBy?: DummyOrderByWithAggregationInput | DummyOrderByWithAggregationInput[]
+    by: DummyScalarFieldEnum[] | DummyScalarFieldEnum
+    having?: DummyScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DummyCountAggregateInputType | true
+    _avg?: DummyAvgAggregateInputType
+    _sum?: DummySumAggregateInputType
+    _min?: DummyMinAggregateInputType
+    _max?: DummyMaxAggregateInputType
+  }
+
+  export type DummyGroupByOutputType = {
+    id: number
+    _count: DummyCountAggregateOutputType | null
+    _avg: DummyAvgAggregateOutputType | null
+    _sum: DummySumAggregateOutputType | null
+    _min: DummyMinAggregateOutputType | null
+    _max: DummyMaxAggregateOutputType | null
+  }
+
+  type GetDummyGroupByPayload<T extends DummyGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DummyGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DummyGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DummyGroupByOutputType[P]>
+            : GetScalarType<T[P], DummyGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DummySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["dummy"]>
+
+  export type DummySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["dummy"]>
+
+  export type DummySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+  }, ExtArgs["result"]["dummy"]>
+
+  export type DummySelectScalar = {
+    id?: boolean
+  }
+
+  export type DummyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id", ExtArgs["result"]["dummy"]>
+
+  export type $DummyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Dummy"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+    }, ExtArgs["result"]["dummy"]>
+    composites: {}
+  }
+
+  type DummyGetPayload<S extends boolean | null | undefined | DummyDefaultArgs> = $Result.GetResult<Prisma.$DummyPayload, S>
+
+  type DummyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DummyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DummyCountAggregateInputType | true
+    }
+
+  export interface DummyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dummy'], meta: { name: 'Dummy' } }
+    /**
+     * Find zero or one Dummy that matches the filter.
+     * @param {DummyFindUniqueArgs} args - Arguments to find a Dummy
+     * @example
+     * // Get one Dummy
+     * const dummy = await prisma.dummy.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DummyFindUniqueArgs>(args: SelectSubset<T, DummyFindUniqueArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Dummy that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DummyFindUniqueOrThrowArgs} args - Arguments to find a Dummy
+     * @example
+     * // Get one Dummy
+     * const dummy = await prisma.dummy.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DummyFindUniqueOrThrowArgs>(args: SelectSubset<T, DummyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dummy that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyFindFirstArgs} args - Arguments to find a Dummy
+     * @example
+     * // Get one Dummy
+     * const dummy = await prisma.dummy.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DummyFindFirstArgs>(args?: SelectSubset<T, DummyFindFirstArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Dummy that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyFindFirstOrThrowArgs} args - Arguments to find a Dummy
+     * @example
+     * // Get one Dummy
+     * const dummy = await prisma.dummy.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DummyFindFirstOrThrowArgs>(args?: SelectSubset<T, DummyFindFirstOrThrowArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Dummies that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Dummies
+     * const dummies = await prisma.dummy.findMany()
+     * 
+     * // Get first 10 Dummies
+     * const dummies = await prisma.dummy.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dummyWithIdOnly = await prisma.dummy.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DummyFindManyArgs>(args?: SelectSubset<T, DummyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Dummy.
+     * @param {DummyCreateArgs} args - Arguments to create a Dummy.
+     * @example
+     * // Create one Dummy
+     * const Dummy = await prisma.dummy.create({
+     *   data: {
+     *     // ... data to create a Dummy
+     *   }
+     * })
+     * 
+     */
+    create<T extends DummyCreateArgs>(args: SelectSubset<T, DummyCreateArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Dummies.
+     * @param {DummyCreateManyArgs} args - Arguments to create many Dummies.
+     * @example
+     * // Create many Dummies
+     * const dummy = await prisma.dummy.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DummyCreateManyArgs>(args?: SelectSubset<T, DummyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Dummies and returns the data saved in the database.
+     * @param {DummyCreateManyAndReturnArgs} args - Arguments to create many Dummies.
+     * @example
+     * // Create many Dummies
+     * const dummy = await prisma.dummy.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Dummies and only return the `id`
+     * const dummyWithIdOnly = await prisma.dummy.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DummyCreateManyAndReturnArgs>(args?: SelectSubset<T, DummyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Dummy.
+     * @param {DummyDeleteArgs} args - Arguments to delete one Dummy.
+     * @example
+     * // Delete one Dummy
+     * const Dummy = await prisma.dummy.delete({
+     *   where: {
+     *     // ... filter to delete one Dummy
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DummyDeleteArgs>(args: SelectSubset<T, DummyDeleteArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Dummy.
+     * @param {DummyUpdateArgs} args - Arguments to update one Dummy.
+     * @example
+     * // Update one Dummy
+     * const dummy = await prisma.dummy.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DummyUpdateArgs>(args: SelectSubset<T, DummyUpdateArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Dummies.
+     * @param {DummyDeleteManyArgs} args - Arguments to filter Dummies to delete.
+     * @example
+     * // Delete a few Dummies
+     * const { count } = await prisma.dummy.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DummyDeleteManyArgs>(args?: SelectSubset<T, DummyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dummies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Dummies
+     * const dummy = await prisma.dummy.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DummyUpdateManyArgs>(args: SelectSubset<T, DummyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Dummies and returns the data updated in the database.
+     * @param {DummyUpdateManyAndReturnArgs} args - Arguments to update many Dummies.
+     * @example
+     * // Update many Dummies
+     * const dummy = await prisma.dummy.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Dummies and only return the `id`
+     * const dummyWithIdOnly = await prisma.dummy.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DummyUpdateManyAndReturnArgs>(args: SelectSubset<T, DummyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Dummy.
+     * @param {DummyUpsertArgs} args - Arguments to update or create a Dummy.
+     * @example
+     * // Update or create a Dummy
+     * const dummy = await prisma.dummy.upsert({
+     *   create: {
+     *     // ... data to create a Dummy
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Dummy we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DummyUpsertArgs>(args: SelectSubset<T, DummyUpsertArgs<ExtArgs>>): Prisma__DummyClient<$Result.GetResult<Prisma.$DummyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Dummies.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyCountArgs} args - Arguments to filter Dummies to count.
+     * @example
+     * // Count the number of Dummies
+     * const count = await prisma.dummy.count({
+     *   where: {
+     *     // ... the filter for the Dummies we want to count
+     *   }
+     * })
+    **/
+    count<T extends DummyCountArgs>(
+      args?: Subset<T, DummyCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DummyCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Dummy.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DummyAggregateArgs>(args: Subset<T, DummyAggregateArgs>): Prisma.PrismaPromise<GetDummyAggregateType<T>>
+
+    /**
+     * Group by Dummy.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DummyGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DummyGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DummyGroupByArgs['orderBy'] }
+        : { orderBy?: DummyGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DummyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDummyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Dummy model
+   */
+  readonly fields: DummyFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Dummy.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DummyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Dummy model
+   */
+  interface DummyFieldRefs {
+    readonly id: FieldRef<"Dummy", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Dummy findUnique
+   */
+  export type DummyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter, which Dummy to fetch.
+     */
+    where: DummyWhereUniqueInput
+  }
+
+  /**
+   * Dummy findUniqueOrThrow
+   */
+  export type DummyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter, which Dummy to fetch.
+     */
+    where: DummyWhereUniqueInput
+  }
+
+  /**
+   * Dummy findFirst
+   */
+  export type DummyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter, which Dummy to fetch.
+     */
+    where?: DummyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dummies to fetch.
+     */
+    orderBy?: DummyOrderByWithRelationInput | DummyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dummies.
+     */
+    cursor?: DummyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dummies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dummies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dummies.
+     */
+    distinct?: DummyScalarFieldEnum | DummyScalarFieldEnum[]
+  }
+
+  /**
+   * Dummy findFirstOrThrow
+   */
+  export type DummyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter, which Dummy to fetch.
+     */
+    where?: DummyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dummies to fetch.
+     */
+    orderBy?: DummyOrderByWithRelationInput | DummyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Dummies.
+     */
+    cursor?: DummyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dummies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dummies.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Dummies.
+     */
+    distinct?: DummyScalarFieldEnum | DummyScalarFieldEnum[]
+  }
+
+  /**
+   * Dummy findMany
+   */
+  export type DummyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter, which Dummies to fetch.
+     */
+    where?: DummyWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Dummies to fetch.
+     */
+    orderBy?: DummyOrderByWithRelationInput | DummyOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Dummies.
+     */
+    cursor?: DummyWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Dummies from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Dummies.
+     */
+    skip?: number
+    distinct?: DummyScalarFieldEnum | DummyScalarFieldEnum[]
+  }
+
+  /**
+   * Dummy create
+   */
+  export type DummyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Dummy.
+     */
+    data?: XOR<DummyCreateInput, DummyUncheckedCreateInput>
+  }
+
+  /**
+   * Dummy createMany
+   */
+  export type DummyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Dummies.
+     */
+    data: DummyCreateManyInput | DummyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dummy createManyAndReturn
+   */
+  export type DummyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * The data used to create many Dummies.
+     */
+    data: DummyCreateManyInput | DummyCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Dummy update
+   */
+  export type DummyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Dummy.
+     */
+    data: XOR<DummyUpdateInput, DummyUncheckedUpdateInput>
+    /**
+     * Choose, which Dummy to update.
+     */
+    where: DummyWhereUniqueInput
+  }
+
+  /**
+   * Dummy updateMany
+   */
+  export type DummyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Dummies.
+     */
+    data: XOR<DummyUpdateManyMutationInput, DummyUncheckedUpdateManyInput>
+    /**
+     * Filter which Dummies to update
+     */
+    where?: DummyWhereInput
+    /**
+     * Limit how many Dummies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dummy updateManyAndReturn
+   */
+  export type DummyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * The data used to update Dummies.
+     */
+    data: XOR<DummyUpdateManyMutationInput, DummyUncheckedUpdateManyInput>
+    /**
+     * Filter which Dummies to update
+     */
+    where?: DummyWhereInput
+    /**
+     * Limit how many Dummies to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dummy upsert
+   */
+  export type DummyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Dummy to update in case it exists.
+     */
+    where: DummyWhereUniqueInput
+    /**
+     * In case the Dummy found by the `where` argument doesn't exist, create a new Dummy with this data.
+     */
+    create: XOR<DummyCreateInput, DummyUncheckedCreateInput>
+    /**
+     * In case the Dummy was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DummyUpdateInput, DummyUncheckedUpdateInput>
+  }
+
+  /**
+   * Dummy delete
+   */
+  export type DummyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+    /**
+     * Filter which Dummy to delete.
+     */
+    where: DummyWhereUniqueInput
+  }
+
+  /**
+   * Dummy deleteMany
+   */
+  export type DummyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Dummies to delete
+     */
+    where?: DummyWhereInput
+    /**
+     * Limit how many Dummies to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Dummy without action
+   */
+  export type DummyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Dummy
+     */
+    select?: DummySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Dummy
+     */
+    omit?: DummyOmit<ExtArgs> | null
+  }
+
 
   /**
    * Enums
@@ -795,11 +1860,211 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const DummyScalarFieldEnum: {
+    id: 'id'
+  };
+
+  export type DummyScalarFieldEnum = (typeof DummyScalarFieldEnum)[keyof typeof DummyScalarFieldEnum]
+
+
+  export const SortOrder: {
+    asc: 'asc',
+    desc: 'desc'
+  };
+
+  export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  /**
+   * Field references
+   */
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
   /**
    * Deep Input Types
    */
 
-  undefined
+
+  export type DummyWhereInput = {
+    AND?: DummyWhereInput | DummyWhereInput[]
+    OR?: DummyWhereInput[]
+    NOT?: DummyWhereInput | DummyWhereInput[]
+    id?: IntFilter<"Dummy"> | number
+  }
+
+  export type DummyOrderByWithRelationInput = {
+    id?: SortOrder
+  }
+
+  export type DummyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: DummyWhereInput | DummyWhereInput[]
+    OR?: DummyWhereInput[]
+    NOT?: DummyWhereInput | DummyWhereInput[]
+  }, "id">
+
+  export type DummyOrderByWithAggregationInput = {
+    id?: SortOrder
+    _count?: DummyCountOrderByAggregateInput
+    _avg?: DummyAvgOrderByAggregateInput
+    _max?: DummyMaxOrderByAggregateInput
+    _min?: DummyMinOrderByAggregateInput
+    _sum?: DummySumOrderByAggregateInput
+  }
+
+  export type DummyScalarWhereWithAggregatesInput = {
+    AND?: DummyScalarWhereWithAggregatesInput | DummyScalarWhereWithAggregatesInput[]
+    OR?: DummyScalarWhereWithAggregatesInput[]
+    NOT?: DummyScalarWhereWithAggregatesInput | DummyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Dummy"> | number
+  }
+
+  export type DummyCreateInput = {
+
+  }
+
+  export type DummyUncheckedCreateInput = {
+    id?: number
+  }
+
+  export type DummyUpdateInput = {
+
+  }
+
+  export type DummyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type DummyCreateManyInput = {
+    id?: number
+  }
+
+  export type DummyUpdateManyMutationInput = {
+
+  }
+
+  export type DummyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type DummyCountOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DummyAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DummyMaxOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DummyMinOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type DummySumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
 
 
 
