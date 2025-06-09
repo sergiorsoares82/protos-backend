@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "tsx watch src/index.ts",
     "build": "tsup src/index.ts --dts --format esm,cjs",
     "typecheck": "tsc --noEmit",
@@ -26,7 +28,9 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.15.30",
+    "jest": "^29.7.0",
     "prettier": "^3.5.3",
     "tsup": "^8.5.0",
     "tsx": "^4.19.4",
