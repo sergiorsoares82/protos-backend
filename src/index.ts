@@ -18,7 +18,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/status', async (req, res) => {
-  const prisma = new PrismaClient();
+  const prisma = new PrismaClient({
+    log: ['error'],
+    errorFormat: 'pretty',
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL,
+      },
+    },
+  });
   const version = await prisma.$queryRaw<
     { server_version: string }[]
   >`SHOW server_version;`;
