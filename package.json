@@ -7,14 +7,15 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "npm run services:up && tsx watch src/index.ts",
-    "build": "prisma generate && tsup src/index.ts --dts --format esm,cjs",
+    "build": "tsup src/index.ts --dts --format esm,cjs",
     "typecheck": "tsc --noEmit",
     "start": "node dist/index.js",
     "services:up": "docker compose -f src/infra/compose.yaml up -d",
     "services:stop": "docker compose -f src/infra/compose.yaml stop",
     "services:down": "docker compose -f src/infra/compose.yaml down",
     "lint:prettier:check": "prettier --check .",
-    "lint:prettier:fix": "prettier --write ."
+    "lint:prettier:fix": "prettier --write .",
+    "postinstall": "prisma generate"
   },
   "repository": {
     "type": "git",
