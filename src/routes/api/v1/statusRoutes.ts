@@ -26,8 +26,8 @@ statusRoutes.get('/status', async (req, res) => {
     dependencies: {
       database: {
         version: databaseVersionValue,
-        max_connections: Number(databaseMaxConnectionsValue), // Example value, replace with actual query if needed
-        opened_connections: Number(databaseOpenedConnectionsValue), // Example value, replace with actual query if needed
+        max_connections: Number(databaseMaxConnectionsValue),
+        opened_connections: Number(databaseOpenedConnectionsValue),
       },
     },
   });
