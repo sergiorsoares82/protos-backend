@@ -1,6 +1,6 @@
 import cors from 'cors';
 
-import express from 'express';
+import express, { type Request, type Response } from 'express';
 import * as dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import router from './routes/api/v1/index.js';
@@ -24,27 +24,16 @@ app.get('/', (req, res) => {
   res.send('Hello from Express + TypeScript!');
 });
 
-// app.get('/status', async (req, res) => {
-//   const prisma = new PrismaClient({
-//     log: ['error'],
-//     errorFormat: 'pretty',
-//     datasources: {
-//       db: {
-//         url: process.env.DATABASE_URL,
-//       },
-//     },
-//   });
-//   const version = await prisma.$queryRaw<
-//     { server_version: string }[]
-//   >`SHOW server_version;`;
-//   res.json({
-//     status: 'OK',
-//     version: version[0]?.server_version || 'unknown',
-//     timestamp: new Date().toISOString(),
-//   });
+// Global catch-all 404 handler for all other routes
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ error: 'Route not found in application' });
+});
 
-//   prisma.$disconnect();
-// });
+// Global error handler (optional, for unexpected errors)
+app.use((err: Error, req: Request, res: Response) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
