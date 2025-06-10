@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "npm run services:up && npm run wait-for-postgres && concurrently --names tsx,jest --hide tsx --kill-others --success command-jest  'NODE_ENV=development tsx --watch src/index.ts' 'jest --runInBand'",
     "test:watch": "jest --watchAll --runInBand --verbose",
