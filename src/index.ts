@@ -1,5 +1,6 @@
 import PrismaPkg from './generated/prisma/client.js';
 const { PrismaClient } = PrismaPkg;
+import cors from 'cors';
 
 import express from 'express';
 import * as dotenv from 'dotenv';
@@ -12,6 +13,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors());
 
 console.log('Novo commit');
 
@@ -37,6 +39,8 @@ app.get('/status', async (req, res) => {
     version: version[0]?.server_version || 'unknown',
     timestamp: new Date().toISOString(),
   });
+
+  prisma.$disconnect();
 });
 
 app.listen(port, () => {
