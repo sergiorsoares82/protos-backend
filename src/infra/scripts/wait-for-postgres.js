@@ -1,8 +1,9 @@
 import { exec } from 'node:child_process';
 
 const checkPostgres = () => {
-  const handleReturn = (error, stdout, stderr) => {
+  const handleReturn = (_, stdout) => {
     if (stdout.search('accepting connections') === -1) {
+      // eslint-disable-next-line no-undef
       process.stdout.write('.');
       checkPostgres();
       return;
