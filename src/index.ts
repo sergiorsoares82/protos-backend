@@ -1,13 +1,14 @@
-import PrismaPkg from './generated/prisma/client.js';
-const { PrismaClient } = PrismaPkg;
 import cors from 'cors';
 
 import express from 'express';
 import * as dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
+import router from './routes/api/v1/index.js';
 
 const env = dotenv.config();
 dotenvExpand.expand(env);
+
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,31 +18,33 @@ app.use(cors());
 
 console.log('Novo commit');
 
+app.use('/api/v1', router);
+
 app.get('/', (req, res) => {
   res.send('Hello from Express + TypeScript!');
 });
 
-app.get('/status', async (req, res) => {
-  const prisma = new PrismaClient({
-    log: ['error'],
-    errorFormat: 'pretty',
-    datasources: {
-      db: {
-        url: process.env.DATABASE_URL,
-      },
-    },
-  });
-  const version = await prisma.$queryRaw<
-    { server_version: string }[]
-  >`SHOW server_version;`;
-  res.json({
-    status: 'OK',
-    version: version[0]?.server_version || 'unknown',
-    timestamp: new Date().toISOString(),
-  });
+// app.get('/status', async (req, res) => {
+//   const prisma = new PrismaClient({
+//     log: ['error'],
+//     errorFormat: 'pretty',
+//     datasources: {
+//       db: {
+//         url: process.env.DATABASE_URL,
+//       },
+//     },
+//   });
+//   const version = await prisma.$queryRaw<
+//     { server_version: string }[]
+//   >`SHOW server_version;`;
+//   res.json({
+//     status: 'OK',
+//     version: version[0]?.server_version || 'unknown',
+//     timestamp: new Date().toISOString(),
+//   });
 
-  prisma.$disconnect();
-});
+//   prisma.$disconnect();
+// });
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
