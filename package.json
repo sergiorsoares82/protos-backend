@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "npm run services:up && npm run wait-for-postgres && concurrently --names tsx,jest --hide tsx --kill-others --success command-jest  'NODE_ENV=development tsx --watch src/index.ts' 'jest --runInBand'",
+    "test:watch": "jest --watchAll --runInBand --verbose",
     "posttest": "npm run services:stop",
     "dev": "npm run services:up && npm run wait-for-postgres && tsx watch src/index.ts",
     "build": "tsup src/index.ts --dts --format esm,cjs",
@@ -40,6 +40,7 @@
     "@types/express": "^5.0.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.30",
+    "concurrently": "^9.1.2",
     "dotenv-cli": "^8.0.0",
     "jest": "^29.7.0",
     "prettier": "^3.5.3",
