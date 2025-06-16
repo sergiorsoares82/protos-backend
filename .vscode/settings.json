@@ -1,3 +1,12 @@
 {
-  "cSpell.ignoreWords": ["isready"]
+  "cSpell.ignoreWords": [
+    "isready"
+  ],
+  "cSpell.words": [
+    "autoincrement",
+    "datasource",
+    "dbgenerated",
+    "Timestamptz",
+    "uuid"
+  ]
 }

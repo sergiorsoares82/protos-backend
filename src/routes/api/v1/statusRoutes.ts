@@ -3,7 +3,7 @@ import prisma from '../../../infra/database';
 
 const statusRoutes = express.Router();
 
-statusRoutes.get('/status', async (req, res) => {
+statusRoutes.get('/', async (req, res) => {
   const updated_at = new Date().toISOString();
 
   const databaseVersionResult = await prisma.$queryRaw<
